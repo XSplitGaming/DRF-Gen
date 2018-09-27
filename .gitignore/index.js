@@ -93,6 +93,31 @@ function generate(account){
     return account[~~(account.length * Math.random())];
 }
 
+if(message.content.startsWith(prefix + "uplay")){
+    var filename = "Uplay.txt";
+
+    fs.readFile(filename, "utf8", function(err, data){
+        if(err) throw err;
+
+        const splitData = data.split("\n");
+        const randomNum = Math.floor(Math.random() * splitData.length);
+        const line = splitData.splice(randomNum, 1);
+
+        let embed = new Discord.RichEmbed()
+        .setAuthor("Spotify")
+        .setColor("#23272a")
+        .setThumbnail(message.author.avatarURL)
+        .addField(generate(line), "This is your Uplay account.")
+
+        message.author.send(embed);
+        message.channel.send(":ballot_box_with_check: Check your PMs, **" + message.author.username + "**!");
+    });
+}
+
+function generate(account){
+    return account[~~(account.length * Math.random())];
+}
+	
 });
 
 client.login(process.env.TOKEN);
