@@ -60,7 +60,7 @@ if(message.content.startsWith(prefix + "minecraft")){
         .addField(generate(line), "This is your Minecraft account.")
 
         message.author.send(embed);
-        message.channel.send("The details of the accounts have been sent in **MP**! Check it :white_check_mark: , **" + message.author.username + "**");
+        message.channel.send("The details of the accounts have been sent in **MP**! \nCheck it :white_check_mark: **" + message.author.username + "**");
     });
 }
 
