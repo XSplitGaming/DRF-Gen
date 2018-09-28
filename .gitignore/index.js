@@ -60,7 +60,7 @@ if(message.content.startsWith(prefix + "minecraft")){
         .addField(generate(line), "This is your Minecraft account.")
 
         message.author.send(embed);
-        message.channel.send("The details of the accounts have been sent in **MP**! \nCheck it :white_check_mark: **" + message.author.username + "**");
+        message.channel.send("The details of the accounts have been sent in **PM**! \nCheck it :white_check_mark: **" + message.author.username + "**");
     });
 }
 
@@ -85,7 +85,7 @@ if(message.content.startsWith(prefix + "spotify")){
         .addField(generate(line), "This is your Spotify account.")
 
         message.author.send(embed);
-        message.channel.send("The details of the accounts have been sent in **MP**! \nCheck it :white_check_mark: **" + message.author.username + "**");
+        message.channel.send("The details of the accounts have been sent in **PM**! \nCheck it :white_check_mark: **" + message.author.username + "**");
     });
 }
 
@@ -110,7 +110,7 @@ if(message.content.startsWith(prefix + "uplay")){
         .addField(generate(line), "This is your Uplay account.")
 
         message.author.send(embed);
-        message.channel.send("The details of the accounts have been sent in **MP**! \nCheck it :white_check_mark: **" + message.author.username + "**");
+        message.channel.send("The details of the accounts have been sent in **PM**! \nCheck it :white_check_mark: **" + message.author.username + "**");
     });
 }
 
