@@ -56,7 +56,7 @@ if(message.content.startsWith(prefix + "minecraft")){
         let embed = new Discord.RichEmbed()
         .setAuthor("Minecraft")
         .setColor("#23272a")
-        .setThumbnail(message.bot.avatarURL)
+        .setThumbnail(message.author.avatarURL)
         .addField(generate(line), "This is your Minecraft account.")
 
         message.author.send(embed);
@@ -81,7 +81,7 @@ if(message.content.startsWith(prefix + "spotify")){
         let embed = new Discord.RichEmbed()
         .setAuthor("Spotify")
         .setColor("#23272a")
-        .setThumbnail(message.bot.avatarURL)
+        .setThumbnail(message.author.avatarURL)
         .addField(generate(line), "This is your Spotify account.")
 
         message.author.send(embed);
@@ -106,7 +106,7 @@ if(message.content.startsWith(prefix + "uplay")){
         let embed = new Discord.RichEmbed()
         .setAuthor("Spotify")
         .setColor("#23272a")
-        .setThumbnail(message.bot.avatarURL)
+        .setThumbnail(message.author.avatarURL)
         .addField(generate(line), "This is your Uplay account.")
 
         message.author.send(embed);
