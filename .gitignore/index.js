@@ -2,6 +2,8 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const fs = require("fs");
 
+const tok = require("./token.json");
+
 let prefix = "drf!";
 
 client.on("ready", () => {
@@ -22,7 +24,7 @@ client.on("message", (message) => {
     .addField("help", "This command.")
     .addField("minecraft", "Get a Minecraft account.")
     .addField("spotify", "Get a Spotify account.")
-    .addField("uplay", "Get a Uplay account.")
+    .addField("hulu", "Get a Hulu account.")
     .addField("uptime", "Show the bot's uptime.")
 
     message.author.send(embed);
@@ -60,7 +62,7 @@ if(message.content.startsWith(prefix + "minecraft")){
         .addField(generate(line), "This is your Minecraft account.")
 
         message.author.send(embed);
-        message.channel.send("The details of the accounts have been sent in **PM**! \nCheck it :white_check_mark: **" + message.author.username + "**");
+        message.channel.send(":ballot_box_with_check: Check your PMs, **" + message.author.username + "**!");
     });
 }
 
@@ -81,11 +83,11 @@ if(message.content.startsWith(prefix + "spotify")){
         let embed = new Discord.RichEmbed()
         .setAuthor("Spotify")
         .setColor("#23272a")
-        .setThumbnail(message.author.avatarURL)
+        .setThumbnail(message.bot.avatarURL)
         .addField(generate(line), "This is your Spotify account.")
 
         message.author.send(embed);
-        message.channel.send("The details of the accounts have been sent in **PM**! \nCheck it :white_check_mark: **" + message.author.username + "**");
+        message.channel.send(":ballot_box_with_check: Check your PMs, **" + message.author.username + "**!");
     });
 }
 
@@ -93,31 +95,53 @@ function generate(account){
     return account[~~(account.length * Math.random())];
 }
 
-if(message.content.startsWith(prefix + "uplay")){
-    var filename = "Uplay.txt";
-
-    fs.readFile(filename, "utf8", function(err, data){
-        if(err) throw err;
-
-        const splitData = data.split("\n");
-        const randomNum = Math.floor(Math.random() * splitData.length);
-        const line = splitData.splice(randomNum, 1);
-
+bot.on('guildMemberAdd', member => {
+    let channel = member.guild.channels.find('name', 'welcome-leave');
+    let memberavatar = member.user.avatarURL
+        if (!channel) return;
         let embed = new Discord.RichEmbed()
-        .setAuthor("Spotify")
-        .setColor("#23272a")
-        .setThumbnail(message.author.avatarURL)
-        .addField(generate(line), "This is your Uplay account.")
+        .setColor('RANDOM')
+        .setThumbnail(memberavatar)
+        .addField(':bust_in_silhouette: | name : ', `${member}`)
+        .addField(':microphone2: | Welcome!', `Welcome to the server, ${member}`)
+        .addField(':id: | User :', "**[" + `${member.id}` + "]**")
+        .addField(':family_mwgb: | Your are the member', `${member.guild.memberCount}`)
+        .addField("Name", `<@` + `${member.id}` + `>`, true)
+        .addField('Server', `${member.guild.name}`, true )
+        .setFooter(`**${member.guild.name}**`)
+        .setTimestamp()
 
-        message.author.send(embed);
-        message.channel.send("The details of the accounts have been sent in **PM**! \nCheck it :white_check_mark: **" + message.author.username + "**");
-    });
-}
-
-function generate(account){
-    return account[~~(account.length * Math.random())];
-}
-	
+        channel.sendEmbed(embed);
 });
 
-client.login(process.env.TOKEN);
+bot.on('guildMemberAdd', member => {
+
+    console.log(`${member}`, "has joined" + `${member.guild.name}`)
+
+});
+
+bot.on('guildMemberRemove', member => {
+    let channel = member.guild.channels.find('name', 'welcome-leave');
+    let memberavatar = member.user.avatarURL
+        if (!channel) return;
+        let embed = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setThumbnail(memberavatar)
+        .addField('Name:', `${member}`)
+        .addField('Has Let the Server', ';(')
+        .addField('Bye Bye :(', 'We will all miss you!')
+        .addField('The server now as', `${member.guild.memberCount}` + " members")
+        .setFooter(`**${member.guild.name}`)
+        .setTimestamp()
+
+        channel.sendEmbed(embed);
+});
+
+bot.on('guildMemberRemove', member => {
+    console.log(`${member}` + "has left" + `${member.guild.name}` + "Sending leave message now")
+    console.log("Leave Message Sent")
+});
+
+});
+
+client.login(tok.token);
