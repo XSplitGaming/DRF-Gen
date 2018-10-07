@@ -95,7 +95,7 @@ function generate(account){
     return account[~~(account.length * Math.random())];
 }
 
-bot.on('guildMemberAdd', member => {
+client.on('guildMemberAdd', member => {
     let channel = member.guild.channels.find('name', 'welcome-leave');
     let memberavatar = member.user.avatarURL
         if (!channel) return;
@@ -114,13 +114,13 @@ bot.on('guildMemberAdd', member => {
         channel.sendEmbed(embed);
 });
 
-bot.on('guildMemberAdd', member => {
+client.on('guildMemberAdd', member => {
 
     console.log(`${member}`, "has joined" + `${member.guild.name}`)
 
 });
 
-bot.on('guildMemberRemove', member => {
+client.on('guildMemberRemove', member => {
     let channel = member.guild.channels.find('name', 'welcome-leave');
     let memberavatar = member.user.avatarURL
         if (!channel) return;
@@ -137,7 +137,7 @@ bot.on('guildMemberRemove', member => {
         channel.sendEmbed(embed);
 });
 
-bot.on('guildMemberRemove', member => {
+client.on('guildMemberRemove', member => {
     console.log(`${member}` + "has left" + `${member.guild.name}` + "Sending leave message now")
     console.log("Leave Message Sent")
 });
