@@ -151,10 +151,10 @@ if(message.content.startsWith(prefix + "uplay")){
         const line = splitData.splice(randomNum, 1);
 
         let embed = new Discord.RichEmbed()
-        .setAuthor("Minecraft")
+        .setAuthor("Uplay")
         .setColor("#23272a")
         .setThumbnail(message.author.avatarURL)
-        .addField(generate(line), "This is your Minecraft account.")
+        .addField(generate(line), "This is your Uplay account.")
 
         message.author.send(embed);
         message.channel.send(":ballot_box_with_check: Check your PMs, **" + message.author.username + "**!");
