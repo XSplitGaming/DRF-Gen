@@ -69,7 +69,7 @@ client.on("message", (message) => {
     .addField("help", "This command.")
     .addField("minecraft", "Get a Minecraft account.")
     .addField("spotify", "Get a Spotify account.")
-    .addField("hulu", "Get a Hulu account.")
+    .addField("uplay", "Soon.")
     .addField("uptime", "Show the bot's uptime.")
 
     message.author.send(embed);
