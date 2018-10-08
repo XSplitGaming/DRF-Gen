@@ -69,7 +69,7 @@ client.on("message", (message) => {
     .addField("help", "This command.")
     .addField("minecraft", "Get a Minecraft account.")
     .addField("spotify", "Get a Spotify account.")
-    .addField("uplay", "Soon.")
+    .addField("uplay", "Get a Uplay account.")
     .addField("uptime", "Show the bot's uptime.")
 
     message.author.send(embed);
@@ -138,6 +138,27 @@ if(message.content.startsWith(prefix + "spotify")){
 
 function generate(account){
     return account[~~(account.length * Math.random())];
+}
+	
+if(message.content.startsWith(prefix + "uplay")){
+    var filename = "Uplay.txt";
+
+    fs.readFile(filename, "utf8", function(err, data){
+        if(err) throw err;
+
+        const splitData = data.split("\n");
+        const randomNum = Math.floor(Math.random() * splitData.length);
+        const line = splitData.splice(randomNum, 1);
+
+        let embed = new Discord.RichEmbed()
+        .setAuthor("Minecraft")
+        .setColor("#23272a")
+        .setThumbnail(message.author.avatarURL)
+        .addField(generate(line), "This is your Minecraft account.")
+
+        message.author.send(embed);
+        message.channel.send(":ballot_box_with_check: Check your PMs, **" + message.author.username + "**!");
+    });
 }
 	
 });
