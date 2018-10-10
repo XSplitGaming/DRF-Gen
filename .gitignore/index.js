@@ -188,6 +188,15 @@ if(message.content.startsWith(prefix + "invite")) {
 		message.channel.send("This is your link :white_check_mark: !")
 	}
 	
+if(message.content.startsWith(prefix + "ping")) {
+		let cms = client.ping
+		let cmss = client.pings
+		let embed = new Discord.RichEmbed()
+		.setColor("#3498db")
+		.setTitle("Latency: " + cms + "." + " Heartbeat: " + cmss + ".")
+		message.channel.send(embed)
+}
+	
 });
 
 client.login(process.env.TOKEN);
