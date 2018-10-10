@@ -70,6 +70,7 @@ client.on("message", (message) => {
     .addField("minecraft", "Get a Minecraft account.")
     .addField("spotify", "Get a Spotify account.")
     .addField("uplay", "Get a Uplay account.")
+    .addField("invite", "Invite the bot on your server.")
     .addField("uptime", "Show the bot's uptime.")
 
     message.author.send(embed);
@@ -180,6 +181,12 @@ module.exports.help = {
   name: "serverinfo",
   description: "Gathers information about the server."
 }
+	
+if(message.content.startsWith(prefix + "invite")) {
+		message.member.hasPermission("EMBED_LINKS")
+		message.channel.send("`https://discordapp.com/oauth2/authorize?client_id=494229360266706945&scope=bot&permissions=2146958847`"); 
+		message.channel.send("This is your link :white_check_mark: !")
+	}
 	
 });
 
