@@ -197,6 +197,16 @@ if(message.content.startsWith(prefix + "ping")) {
 		message.channel.send(embed)
 }
 	
+if(message.content.startsWith(prefix + "userinfo")) {
+	let username = message.author.username
+	let embed = new Discord.RichEmbed()
+	.setTitle(username)
+	.setAuthor("Nickname")
+	.addField(ID)
+	message.channel.send(embed)
+
+}
+	
 });
 
 client.login(process.env.TOKEN);
