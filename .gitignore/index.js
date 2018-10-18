@@ -163,7 +163,7 @@ if(message.content.startsWith(prefix + "uplay")){
 }
 	
 module.exports.run = async (bot, message, args) => {
-
+if(message.content.startsWith(prefix + "serverinfo")) {
   let serverembed = new Discord.RichEmbed()
   .setTitle("Server Information")
   .setColor("0ED4DA")
@@ -173,7 +173,7 @@ module.exports.run = async (bot, message, args) => {
   .addField("Server Create Date", message.guild.createdAt, true)
   .addField("Member Count", message.guild.memberCount, true)
 
-  return message.channel.send(serverembed);
+  message.channel.send(serverembed);
 }
 
 
