@@ -162,7 +162,6 @@ if(message.content.startsWith(prefix + "uplay")){
     });
 }
 	
-module.exports.run = async (bot, message, args) => {
 if(message.content.startsWith(prefix + "serverinfo")) {
   let serverembed = new Discord.RichEmbed()
   .setTitle("Server Information")
