@@ -72,6 +72,9 @@ client.on("message", (message) => {
     .addField("uplay", "Get a Uplay account.")
     .addField("invite", "Invite the bot on your server.")
     .addField("uptime", "Show the bot's uptime.")
+    .addField("serverinfo", "Gathers information about the server.")
+    .addField("userinfo", "All informations about a user.")
+    .addField("ping", "See bot latency.")
 
     message.author.send(embed);
     message.channel.send(":ballot_box_with_check: Check your PMs, **" + message.author.username + "**!");
