@@ -206,6 +206,27 @@ if(message.content.startsWith(prefix + "userinfo")) {
 
 }
 	
+if(message.content.startsWith(prefix + "userinfo")) {
+    let user;
+    if (message.mentions.users.first()) {
+      user = message.mentions.users.first();
+    } else {
+        user = message.author;
+    }
+    const embed = new Discord.RichEmbed()
+    .setTitle(`Informations about`)
+    .setDescription(`${user.username}` + "#" + `${user.discriminator}`)
+    .setThumbnail(user.displayAvatarURL)
+    .setColor('RANDOM')
+    .addField('ID', user.id, true)
+    .addField('Username', user.username, true)
+    .addField('Discrim', user.discriminator, true)
+    .addField('Status', user.presence.status, true)
+    .addField('Bot', user.bot, true)
+    .addField("Game:",`${user.presence.game ? user.presence.game.name : 'None'}`, true)
+    message.channel.send(embed)
+}
+	
 });
 
 client.login(process.env.TOKEN);
