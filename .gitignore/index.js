@@ -200,16 +200,6 @@ if(message.content.startsWith(prefix + "ping")) {
 }
 	
 if(message.content.startsWith(prefix + "userinfo")) {
-	let username = message.author.username
-	let embed = new Discord.RichEmbed()
-	.setTitle(username)
-	.setAuthor("Nickname")
-	.addField(ID)
-	message.channel.send(embed)
-
-}
-	
-if(message.content.startsWith(prefix + "userinfo")) {
     let user;
     if (message.mentions.users.first()) {
       user = message.mentions.users.first();
