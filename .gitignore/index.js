@@ -174,6 +174,7 @@ if(message.content.startsWith(prefix + "serverinfo")) {
   .addField('Server Owner', message.guild.owner.user.tag, true)
   .addField("Server Create Date", message.guild.createdAt, true)
   .addField("Member Count", message.guild.memberCount, true)
+  .setFooter('Requested By ' + message.author.username + ' At ' + new Date().toLocaleString(), message.author.avatarURL)
 
   message.channel.send(serverembed);
 }
@@ -196,6 +197,7 @@ if(message.content.startsWith(prefix + "ping")) {
 		let embed = new Discord.RichEmbed()
 		.setColor("#3498db")
 		.setTitle("Latency: " + cms + "." + " Heartbeat: " + cmss + ".")
+		.setFooter('Requested By ' + message.author.username + ' At ' + new Date().toLocaleString(), message.author.avatarURL)
 		message.channel.send(embed)
 }
 	
@@ -217,6 +219,7 @@ if(message.content.startsWith(prefix + "userinfo")) {
     .addField('Status', user.presence.status, true)
     .addField('Bot', user.bot, true)
     .addField("Game:",`${user.presence.game ? user.presence.game.name : 'None'}`, true)
+    .setFooter('Requested By ' + message.author.username + ' At ' + new Date().toLocaleString(), message.author.avatarURL)
     message.channel.send(embed)
 }
 	
