@@ -10,6 +10,21 @@ client.on("ready", () => {
     console.log("Ready!");
 });
 
+client.on("message", (message) => {
+	if(message.content === "discord.gg") {
+	message.channel.send("**" + message.author.username +"**" + " Has been warned for posted a link!")
+	message.delete()
+	}
+	if(message.content === "http") {
+	message.channel.send("**" + message.author.username +"**" + " Has been warned for posted a link!")
+	message.delete()
+	}
+	if(message.content ==="https") {
+	message.channel.send("**" + message.author.username +"**" + " Has been warned for posted a link!")
+	message.delete()
+	}
+})
+
 client.on('guildMemberAdd', member => {
     let channel = member.guild.channels.find('name', 'welcome-leave');
     let memberavatar = member.user.avatarURL
