@@ -153,7 +153,7 @@ if(message.content.startsWith(prefix + "spotify")){
         let embed = new Discord.RichEmbed()
         .setAuthor("Spotify")
         .setColor("#23272a")
-        .setThumbnail(message.bot.avatarURL)
+        .setThumbnail(message.author.avatarURL)
         .addField(generate(line), "This is your Spotify account.")
 
         message.author.send(embed);
