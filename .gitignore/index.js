@@ -29,6 +29,14 @@ client.on("message", (message) => {
 	  message.delete(1);
 	  message.channel.send(warnMsg)
 	}
+	
+	if (message.content.includes("discord.gg")) {
+	let warnMsg = "**" + message.author.username +"**" + " Has been warned for posted a link!";
+	  console.log("deleted " + message.content + " from " + message.author)
+	  message.delete(1);
+	  message.channel.send(warnMsg)
+	}
+	
 });
 
 client.on('guildMemberAdd', member => {
