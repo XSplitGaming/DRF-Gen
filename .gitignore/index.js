@@ -1,8 +1,26 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const fs = require("fs");
-
 let prefix = "drf!";
+client.commands = new Discord.Collection();
+
+fs.readdir("./commands/", (err, files) => {
+
+  if(err) console.log(err);
+
+  let jsfile = files.filter(f => f.split(".").pop() === "js")
+  if(jsfile.length <= 0){
+    console.log("Couldn't find commands.");
+    return;
+  }
+
+  jsfile.forEach((f, i) =>{
+    let props = require(`./commands/${f}`);
+    console.log(`${f} loaded!`);
+    client.commands.set(props.help.name, props);
+  });
+
+});
 
 client.on("ready", () => {
 	client.user.setActivity("drf!help | In " + client.guilds.size + " servers.");
@@ -85,29 +103,6 @@ client.on('guildMemberRemove', member => {
     console.log(`${member}` + "has left" + `${member.guild.name}` + "Sending leave message now")
     console.log("Leave Message Sent")
 });
-
-client.on("message", (message) => {
-    if(!message.content.startsWith("drf!")) return;
-    if(message.author.bot) return;
-
-    if(message.content.startsWith(prefix + "help")){
-    let embed = new Discord.RichEmbed()
-    .setAuthor("Help Menu")
-    .setColor("#23272a")
-    .setThumbnail(message.author.avatarURL)
-    .addField("help", "This command.")
-    .addField("minecraft", "Get a Minecraft account.")
-    .addField("spotify", "Get a Spotify account.")
-    .addField("uplay", "Get a Uplay account.")
-    .addField("invite", "Invite the bot on your server.")
-    .addField("uptime", "Show the bot's uptime.")
-    .addField("serverinfo", "Gathers information about the server.")
-    .addField("userinfo", "All informations about a user.")
-    .addField("ping", "See bot latency.")
-
-    message.author.send(embed);
-    message.channel.send(":ballot_box_with_check: Check your PMs, **" + message.author.username + "**!");
-}
 
 if(message.content.startsWith(prefix + "uptime")){
     let totalSeconds = (client.uptime / 1000);
