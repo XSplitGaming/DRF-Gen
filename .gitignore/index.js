@@ -18,8 +18,6 @@ fs.readdir("./commands/", (err, files) => {
     let props = require(`./commands/${f}`);
     console.log(`${f} loaded!`);
     client.commands.set(props.help.name, props);
-  });
-
 });
 
 client.on("ready", () => {
