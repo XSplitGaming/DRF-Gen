@@ -2,7 +2,9 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const fs = require("fs");
 let prefix = "drf!";
+client.on("message", (message) => {
 client.commands = new Discord.Collection();
+
 
 fs.readdir("./commands/", (err, files) => {
 
@@ -19,7 +21,7 @@ fs.readdir("./commands/", (err, files) => {
     console.log(`${f} loaded!`);
     client.commands.set(props.help.name, props);
 });
-
+})
 client.on("ready", () => {
 	client.user.setActivity("drf!help | In " + client.guilds.size + " servers.");
     client.user.setStatus("dnd");
